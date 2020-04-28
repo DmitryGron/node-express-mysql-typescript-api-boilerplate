@@ -1,3 +1,4 @@
+
 import 'reflect-metadata';
 import { createConnection } from 'typeorm';
 const morgan = require('morgan');
@@ -20,12 +21,12 @@ createConnection().then(() => {
 
     express.use(authenticate);
 
-// Router
+    // Router
     express.use(application.url.base, indexRoute);
 
-// Joi Error Handler
+    // Joi Error Handler
     express.use(joiErrorHandler);
-// Error Handler
+    // Error Handler
     express.use(errorHandler.notFoundErrorHandler);
 
     express.use(errorHandler.errorHandler);

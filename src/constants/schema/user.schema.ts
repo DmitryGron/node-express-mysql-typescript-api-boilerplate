@@ -1,6 +1,6 @@
-import joi from 'joi';
+import * as joi from '@hapi/joi';
 
-export default {
+export const registerSchema = joi.object({
   register: {
     body: {
       email: joi.string().email().required(),
@@ -8,15 +8,22 @@ export default {
       name: joi.string().required(),
     },
   },
+});
+
+export const loginSchema = joi.object({
   login: {
     body: {
       email: joi.string().email().required(),
       password: joi.string().required(),
     },
   },
+});
+
+export const updateSchema = joi.object({
   update: {
     body: {
 
     },
   },
-};
+});
+

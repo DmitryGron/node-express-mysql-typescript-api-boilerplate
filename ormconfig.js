@@ -2,16 +2,16 @@ module.exports = {
   type: 'mysql',
   host: process.env.DB_HOST || '127.0.0.1',
   username: process.env.DB_USER || 'root',
-  password: process.env.DB_PASSWORD || 'scout',
-  database: process.env.DB_NAME || 'test_db',
+  password: process.env.DB_PASSWORD || 'qweqwe',
+  database: process.env.DB_NAME || 'user_auth',
   charset: 'utf8',
   driver: 'mysql',
   synchronize: process.env.NODE_ENV !== 'production',
-  entities:[
+  entities: [
     '**/**.entity.ts'
     // '**/**.entity.js'
   ],
-  logging: process.env.NODE_ENV !== 'production'? 'all': 'error',
+  logging: process.env.NODE_ENV !== 'production' ? 'all' : 'error',
   migrations: ["migration/*.ts"],
   cli: {
     migrationsDir: "migration"

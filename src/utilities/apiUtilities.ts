@@ -1,20 +1,20 @@
 import { NextFunction, Request, Response } from 'express';
-import HttpStatusCode from 'http-status-codes';
+import httpStatusCodes from 'http-status-codes';
 
 import { User } from '../entities/user/user.entity';
 import IRequest from '../types/IRequest';
-import ApiResponse from './apiResponse';
+import apiResponse from './apiResponse';
 
 const extractUserIdFromRequest = (req: IRequest) => {
   return req.user.id;
 };
 
-const extractQueryForRequest = (req: Request, query: string) => {
-  if (req.query[query]) {
-    return JSON.parse(req.query[query]);
-  }
-  return [];
-};
+// const extractQueryForRequest = (req: Request, query: string) => {
+//   if (req.query[query]) {
+//     return JSON.parse(req.query[query]);
+//   }
+//   return [];
+// };
 
 const extractCookieFromRequest = (req: Request, key: string) => {
   if (req.headers.authorization) {
@@ -39,7 +39,7 @@ const sanitizeUser = (user: User) => {
 
 const restrictToStaff = (req: IRequest, res: Response, next: NextFunction) => {
   if (!req.user.isStaff) {
-    ApiResponse.error(res, HttpStatusCode.FORBIDDEN);
+    apiResponse.error(res, httpStatusCodes.FORBIDDEN);
     return;
   }
   next();
@@ -47,7 +47,7 @@ const restrictToStaff = (req: IRequest, res: Response, next: NextFunction) => {
 
 export {
   extractUserIdFromRequest,
-  extractQueryForRequest,
+  // extractQueryForRequest,
   sanitizeUser,
   extractCookieFromRequest,
   restrictToStaff,
